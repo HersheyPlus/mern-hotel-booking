@@ -11,7 +11,7 @@ const storage = multer.memoryStorage();
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5, //! 5MB
+    fileSize: 1024 * 1024 * 5, //! 
   },
 });
 
@@ -62,5 +62,16 @@ router.post(
     }
   }
 );
+
+router.get('/',verifyToken, async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find({userId: req.userId});
+    res.json(hotels)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({message: "Something went wrong"})
+  }
+})
+
 
 export default router;
