@@ -1,4 +1,4 @@
-import { Routes as Router, Route,Navigate } from "react-router-dom";
+import { Routes as Router, Route, Navigate } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
@@ -13,21 +13,25 @@ import Home from "./pages/Home";
 import { useAppContext } from "./contexts/AppContext";
 
 function App() {
-  const {isLoggedIn} = useAppContext()
+  const { isLoggedIn } = useAppContext();
   return (
     <Layout>
       <Router>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/detail/:hotelId" element={<Detail />} />
         <Route path="/register" element={<Register />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/hotel/:hotelId/booking" element={<Booking />} />
-        {isLoggedIn && <Route path="/add-hotel" element={<AddHotel />} />}
-        <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
-        <Route path="/my-hotels" element={<MyHotels />} />
-        <Route path="/my-bookings" element={<MyBookings />} />
-        <Route path="/*" element={<Navigate to='/' />} />
+        {isLoggedIn && (
+          <>
+            <Route path="/detail/:hotelId" element={<Detail />} />
+            <Route path="/hotel/:hotelId/booking" element={<Booking />} />
+            <Route path="/add-hotel" element={<AddHotel />} />
+            <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
+            <Route path="/my-hotels" element={<MyHotels />} />
+            <Route path="/my-bookings" element={<MyBookings />} />
+          </>
+        )}
+        <Route path="/*" element={<Navigate to="/" />} />
       </Router>
     </Layout>
   );

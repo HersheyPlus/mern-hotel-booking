@@ -90,4 +90,4 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
   );
 };
 
-export default ManageHotelForm; 
+export default ManageHotelForm;
