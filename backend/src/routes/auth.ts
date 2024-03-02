@@ -10,7 +10,7 @@ const router = express.Router();
 router.post(
   "/login",
   [
-    check("email", "Email is required").isEmail(),
+    check("email", "Email is require").isEmail(),
     check("password", "Password with 6 or more characters required").isLength({
       min: 6,
     }),
@@ -18,7 +18,7 @@ router.post(
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ msg: errors.array() });
+      return res.status(400).json({ msg: errors.array().map((error) => error.msg)});
     }
     const { email, password } = req.body;
 

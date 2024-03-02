@@ -6,8 +6,18 @@ import userRoutes from './routes/users'
 import authRoutes from './routes/auth'
 import limiter from './lib/limitApiRequest'
 import path from 'path'
+import {v2 as cloudinary} from 'cloudinary';
+import myHotelRoutes from './routes/my-hotels'
 
-mongoose.connect(process.env.MONGODB_URI as string)
+cloudinary.config({ 
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME as string, 
+  api_key: process.env.CLOUDINARY_API_KEY as string,  
+  api_secret: process.env.CLOUDINARY_API_SECRET as string
+});
+
+mongoose.connect(process.env.MONGODB_URI as string).then(() => {
+  console.log("Connected to MongoDB")
+})
 import cookieParser from 'cookie-parser'
 
 const app = express()
@@ -23,7 +33,10 @@ app.use(express.static(path.join(__dirname, '../../frontend/dist')))
 
 app.use('/api/users', userRoutes)
 app.use('/api/auth', authRoutes)
-
+app.use('/api/my-hotels',myHotelRoutes)
+app.get('*', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'))
+})
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
