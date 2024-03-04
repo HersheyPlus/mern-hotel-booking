@@ -21,9 +21,9 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/register" element={<Register />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/detail/:hotelId" element={<Detail />} />
         {isLoggedIn && (
           <>
-            <Route path="/detail/:hotelId" element={<Detail />} />
             <Route path="/hotel/:hotelId/booking" element={<Booking />} />
             <Route path="/add-hotel" element={<AddHotel />} />
             <Route path="/edit-hotel/:hotelId" element={<EditHotel />} />
