@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import { check, validationResult } from "express-validator";
 import verifyToken from "../middleware/auth";
 
+
 const router = express.Router();
 
 router.get('/me', verifyToken, async (req: Request, res: Response) => {
@@ -65,5 +66,9 @@ router.post(
     }
   }
 );
+
+
+
+
 
 export default router;
