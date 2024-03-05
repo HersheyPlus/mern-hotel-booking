@@ -30,12 +30,15 @@ router.get("/search", async (req: Request, res: Response) => {
     const pageNumber = parseInt(
       req.query.page ? req.query.page.toString() : "1"
     );
-    const skip = pageSize * (pageNumber - 1);
+    const skip = (pageNumber - 1) * pageSize;
+
     const hotels = await Hotel.find(query)
-      .skip(skip)
       .sort(sortOptions)
+      .skip(skip)
       .limit(pageSize);
+
     const total = await Hotel.countDocuments(query);
+
     const response: HotelSearchResponse = {
       data: hotels,
       pagination: {
@@ -44,67 +47,23 @@ router.get("/search", async (req: Request, res: Response) => {
         pages: Math.ceil(total / pageSize),
       },
     };
+
     res.json(response);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    console.log("error", error);
+    res.status(500).json({ message: "Something went wrong" });
   }
 });
 
-const constructSearchQuery = (queryParams: any) => {
-  let constructedQuery: any = {};
-
-  if (queryParams.destination) {
-    constructedQuery.$or = [
-      { city: new RegExp(queryParams.destination, "i") },
-      { country: new RegExp(queryParams.destination, "i") },
-    ];
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find().sort("-lastUpdated");
+    res.json(hotels);
+  } catch (error) {
+    console.log("error", error);
+    res.status(500).json({ message: "Error fetching hotels" });
   }
-
-  if (queryParams.adultCount) {
-    constructedQuery.adultCount = {
-      $gte: parseInt(queryParams.adultCount),
-    };
-  }
-
-  if (queryParams.childCount) {
-    constructedQuery.childCount = {
-      $gte: parseInt(queryParams.childCount),
-    };
-  }
-
-  if (queryParams.facilities) {
-    constructedQuery.facilities = {
-      $all: Array.isArray(queryParams.facilities)
-        ? queryParams.facilities
-        : [queryParams.facilities],
-    };
-  }
-
-  if (queryParams.types) {
-    constructedQuery.type = {
-      $in: Array.isArray(queryParams.types)
-        ? queryParams.types
-        : [queryParams.types],
-    };
-  }
-
-  if (queryParams.stars) {
-    const starRatings = Array.isArray(queryParams.stars)
-      ? queryParams.stars.map((star: string) => parseInt(star))
-      : parseInt(queryParams.stars);
-
-    constructedQuery.starRating = { $in: starRatings };
-  }
-
-  if (queryParams.maxPrice) {
-    constructedQuery.pricePerNight = {
-      $lte: parseInt(queryParams.maxPrice).toString(),
-    };
-  }
-
-  return constructedQuery;
-};
+});
 
 router.get(
   "/:id",
@@ -143,7 +102,7 @@ router.post(
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: totalCost * 100,
-      currency:"thb",
+      currency: "gbp",
       metadata: {
         hotelId,
         userId: req.userId,
@@ -216,5 +175,60 @@ router.post(
     }
   }
 );
+
+const constructSearchQuery = (queryParams: any) => {
+  let constructedQuery: any = {};
+
+  if (queryParams.destination) {
+    constructedQuery.$or = [
+      { city: new RegExp(queryParams.destination, "i") },
+      { country: new RegExp(queryParams.destination, "i") },
+    ];
+  }
+
+  if (queryParams.adultCount) {
+    constructedQuery.adultCount = {
+      $gte: parseInt(queryParams.adultCount),
+    };
+  }
+
+  if (queryParams.childCount) {
+    constructedQuery.childCount = {
+      $gte: parseInt(queryParams.childCount),
+    };
+  }
+
+  if (queryParams.facilities) {
+    constructedQuery.facilities = {
+      $all: Array.isArray(queryParams.facilities)
+        ? queryParams.facilities
+        : [queryParams.facilities],
+    };
+  }
+
+  if (queryParams.types) {
+    constructedQuery.type = {
+      $in: Array.isArray(queryParams.types)
+        ? queryParams.types
+        : [queryParams.types],
+    };
+  }
+
+  if (queryParams.stars) {
+    const starRatings = Array.isArray(queryParams.stars)
+      ? queryParams.stars.map((star: string) => parseInt(star))
+      : parseInt(queryParams.stars);
+
+    constructedQuery.starRating = { $in: starRatings };
+  }
+
+  if (queryParams.maxPrice) {
+    constructedQuery.pricePerNight = {
+      $lte: parseInt(queryParams.maxPrice).toString(),
+    };
+  }
+
+  return constructedQuery;
+};
 
 export default router;

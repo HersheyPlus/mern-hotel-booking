@@ -19,7 +19,7 @@ router.post(
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ msg: errors.array().map((error) => error.msg)});
+      return res.status(400).json({ message: errors.array().map((error) => error.msg)});
     }
     const { email, password } = req.body;
 
@@ -28,14 +28,14 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ msg: "Invalid Credentials. Email is not found" });
+          .json({ message: "Invalid Credentials. Email is not found" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         return res
           .status(400)
-          .json({ msg: "Invalid Credentials. Password is not correct" });
+          .json({ message: "Invalid Credentials. Password is not correct" });
       }
       const token = jwt.sign(
         { userId: user.id },
@@ -50,14 +50,14 @@ router.post(
       res
         .status(200)
         .json([
-          { msg: "Login successful" },
+          { message: "Login successful" },
           { userId: user._id },
           { token: token },
         ]);
 
     } catch (error) {
       console.log(error);
-      res.status(500).json({ msg: "Something went wrong" });
+      res.status(500).json({ message: "Something went wrong" });
     }
   }
 );
