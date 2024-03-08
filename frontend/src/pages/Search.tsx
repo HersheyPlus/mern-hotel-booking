@@ -8,6 +8,8 @@ import StarRatingFilter from "../components/StarRatingFilter";
 import HotelTypesFilter from "../components/HotelTypesFilter";
 import FacilitiesFilter from "../components/FacilitiesFilter";
 import PriceFilter from "../components/PriceFilter";
+import { IoMenu } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 
 const Search = () => {
   const search = useSearchContext();
@@ -17,6 +19,8 @@ const Search = () => {
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
   const [selectedPrice, setSelectedPrice] = useState<number | undefined>();
   const [sortOption, setSortOption] = useState<string>("");
+  const [isOpen, setIsOpen] = useState(false);
+
 
   const searchParams = {
     destination: search.destination,
@@ -71,29 +75,60 @@ const Search = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr]">
-      <div className="rounded-lg border border-slate-300 p-5 h-fit sticky top-10">
-        <div className="space-y-5">
-          <h3 className="font-se,ibold border-b border-slate-300 pb-4">
-            Filter by:
-          </h3>
-          <StarRatingFilter
-            selectedStars={selectedStars}
-            onChange={handleStarsChange}
-          />
-           <HotelTypesFilter
-            selectedHotelTypes={selectedHotelTypes}
-            onChange={handleHotelTypeChange}
-          />
-          <FacilitiesFilter
-            selectedFacilities={selectedFacilities}
-            onChange={handleFacilityChange}
-          />
-          <PriceFilter
-            selectedPrice={selectedPrice}
-            onChange={(value?: number) => setSelectedPrice(value)}
-          />
-        </div>
+      <div className="block lg:hidden mb-2">
+      <button onClick={() => setIsOpen(!isOpen)}>
+      {isOpen ?  <RxCross1 size={30} className="cursor-pointer lg:hidden mb-2"  /> : <IoMenu size={30} className="cursor-pointer lg:hidden mb-2"/>}
+      </button>
+      {isOpen && (
+              <div className="rounded-lg border border-slate-300 p-5 h-fit sticky top-10">
+              <div className="space-y-5">
+                <h3 className="font-se,ibold border-b border-slate-300 pb-4">
+                  Filter by:
+                </h3>
+                <StarRatingFilter
+                  selectedStars={selectedStars}
+                  onChange={handleStarsChange}
+                />
+                 <HotelTypesFilter
+                  selectedHotelTypes={selectedHotelTypes}
+                  onChange={handleHotelTypeChange}
+                />
+                <FacilitiesFilter
+                  selectedFacilities={selectedFacilities}
+                  onChange={handleFacilityChange}
+                />
+                <PriceFilter
+                  selectedPrice={selectedPrice}
+                  onChange={(value?: number) => setSelectedPrice(value)}
+                />
+              </div>
+              </div>
+      )}
       </div>
+      <div className="rounded-lg border border-slate-300 p-5 h-fit sticky top-10 hidden lg:block">
+              <div className="space-y-5">
+                <h3 className="font-se,ibold border-b border-slate-300 pb-4">
+                  Filter by:
+                </h3>
+                <StarRatingFilter
+                  selectedStars={selectedStars}
+                  onChange={handleStarsChange}
+                />
+                 <HotelTypesFilter
+                  selectedHotelTypes={selectedHotelTypes}
+                  onChange={handleHotelTypeChange}
+                />
+                <FacilitiesFilter
+                  selectedFacilities={selectedFacilities}
+                  onChange={handleFacilityChange}
+                />
+                <PriceFilter
+                  selectedPrice={selectedPrice}
+                  onChange={(value?: number) => setSelectedPrice(value)}
+                />
+              </div>
+              </div>
+
       <div className="flex flex-col gap-5">
         <div className="flex justify-between items-center">
           <span className="text-xl font-bold">
@@ -131,3 +166,4 @@ const Search = () => {
 };
 
 export default Search;
+

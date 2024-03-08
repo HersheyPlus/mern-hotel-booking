@@ -23,10 +23,10 @@ const Header = () => {
 
   return (
     <header className="h-full">
-      <nav className="w-full p-4 md:py-8">
+      <nav className="w-full py-2 md:py-4">
         <div className="flex-col flex md:flex-row justify-between gap-5 md:gap-0 md:items-center">
           <Link to="/">
-            <h1 className="font-bold whitespace-nowrap bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="font-bold whitespace-nowrap bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent text-3xl lg:text-4xl">
               Joy-Booking
             </h1>
           </Link>
@@ -35,12 +35,12 @@ const Header = () => {
               <>
                 <Button
                   link={"/sign-in"}
-                  title={"Sign In"}
+                  title={"Login"}
                   variants={"before:bg-green-500"}
                 />
                 <Button
                   link={"/register"}
-                  title={"Sign Up"}
+                  title={"Register"}
                   variants={"before:bg-blue-600"}
                 />
               </>

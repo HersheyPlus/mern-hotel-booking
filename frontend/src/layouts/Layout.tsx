@@ -8,10 +8,10 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="max-w-screen-2xl mx-auto">
+    <div className="max-w-screen-2xl mx-auto px-4 md:px-6">
       <Header />
       <SearchBar />
-      <main className="py-2 md:py-4">{children}</main>
+      <main className="py-5 md:py-7">{children}</main>
       <Footer />
     </div>
   );

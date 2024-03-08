@@ -35,12 +35,12 @@ const SignInForm = () => {
     mutation.mutate(data);
   });
   return (
-    <form action="" className="flex flex-col gap-5 p-2" onSubmit={onSubmit}>
-      <h2 className="font-bold">Login</h2>
-      <label htmlFor="" className="text-gray-300 font-semibold ">
+    <form action="" className="flex flex-col gap-5 p-2 md:w-[50%] md:mx-auto" onSubmit={onSubmit}>
+      <h2 className="font-extrabold text-2xl lg:text-3xl text-center border-2 border-gray-600 mx-auto px-3 py-1 rounded-md bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent ">Login</h2>
+      <label htmlFor="" className="text-gray-300 font-semibold">
         Email
         <input
-          className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+          className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
           type="email"
           {...register("email", { required: "Email is required" })}
         ></input>
@@ -53,7 +53,7 @@ const SignInForm = () => {
       <label htmlFor="" className="text-gray-300 font-semibold">
         Password
         <input
-          className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+          className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
           type="password"
           {...register("password", {
             required: "Password is required",

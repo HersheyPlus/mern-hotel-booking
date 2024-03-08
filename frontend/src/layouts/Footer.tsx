@@ -9,7 +9,7 @@ const Footer = () => {
             to="https://flowbite.com/"
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
           >
-            <h1 className="font-bold whitespace-nowrap bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="font-bold whitespace-nowrap bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent text-3xl lg:text-4xl">
               Melbromss
             </h1>
           </Link>

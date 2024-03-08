@@ -39,13 +39,13 @@ const RegisterForm = () => {
   });
 
   return (
-    <form action="" className="flex flex-col gap-5 p-2" onSubmit={onSubmit}>
-      <h2 className="font-bold">Create an Account</h2>
-      <div className="flex flex-col md:flex-row gap-5">
-        <label htmlFor="" className="text-gray-300 font-semibold">
+    <form action="" className="flex flex-col gap-5 p-2 md:w-[50%] md:mx-auto " onSubmit={onSubmit}>
+      <h2 className="font-extrabold text-2xl lg:text-3xl text-center border-2 border-gray-600 mx-auto px-3 py-1 rounded-md bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent">Create an Account</h2>
+      <div className="flex flex-col md:flex-row gap-4 xl:justify-between md:items-center">
+       <label htmlFor="" className="text-gray-300 font-semibold xl:w-[50%]">
           First Name
           <input
-            className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+            className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
             type="text"
             {...register("firstName", { required: "First name is required" })}
           ></input>
@@ -55,10 +55,10 @@ const RegisterForm = () => {
             </span>
           )}
         </label>
-        <label htmlFor="" className="text-gray-300 font-semibold">
+        <label htmlFor="" className="text-gray-300 font-semibold xl:w-[50%]">
           Last Name
           <input
-            className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+            className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
             type="text"
             {...register("lastName", { required: "Last name is required" })}
           ></input>
@@ -72,7 +72,7 @@ const RegisterForm = () => {
       <label htmlFor="" className="text-gray-300 font-semibold ">
         Email
         <input
-          className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+          className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
           type="email"
           {...register("email", { required: "Email is required" })}
         ></input>
@@ -85,7 +85,7 @@ const RegisterForm = () => {
       <label htmlFor="" className="text-gray-300 font-semibold">
         Password
         <input
-          className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+          className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
           type="password"
           {...register("password", {
             required: "Password is required",
@@ -104,7 +104,7 @@ const RegisterForm = () => {
       <label htmlFor="" className="text-gray-300 font-semibold">
         Confirm Password
         <input
-          className="border rounded w-full py-1 px-2 font-normal text-gray-800"
+          className="mt-1 border rounded w-full py-1 px-2 font-normal text-gray-800"
           type="password"
           {...register("confirmPassword", {
             required: "Please confirm your password",
@@ -127,7 +127,7 @@ const RegisterForm = () => {
         className="text-white bg-gray-800 font-medium rounded-lg px-5 py-2.5 me-2 mb-2 text-btn before:ease relative overflow-hidden shadow-2xl before:absolute before:left-0 before:-ml-2 before:h-48 before:w-full before:origin-top-right before:-translate-x-full before:translate-y-12 before:-rotate-90 before:transition-all before:duration-500 hover:text-white hover:shadow-black hover:before:-rotate-180 border border-purple-400 before:bg-blue-500"
         type="submit"
       >
-        <span className="relative z-10">Sing Up</span>
+        <span className="relative z-10">Register</span>
       </button>
     </form>
   );
