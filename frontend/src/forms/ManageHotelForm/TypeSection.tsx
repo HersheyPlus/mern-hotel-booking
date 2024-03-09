@@ -7,14 +7,14 @@ const TypeSection = () => {
     const typeWatch = watch("type");
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-3">Type</h2>
-      <div className="grid grid-cols-5 gap-2">
+      <h2 className="text-2xl font-bold mb-3 text-gray-200">Type</h2>
+      <div className="grid grid-cols-3 lg:grid-cols-5 gap-2">
         {hotelTypes.map((type) => (
           <label
             className={
               typeWatch === type
-                ? "cursor-pointer bg-blue-600 text-sm rounded-full px-4 py-2 font-semibold"
-                : "cursor-pointer bg-gray-600 text-sm rounded-full px-4 py-2 font-semibold"
+                ? "cursor-pointer bg-blue-600 text-sm rounded-full px-4 py-2 font-semibold text-center"
+                : "cursor-pointer bg-gray-600 text-sm rounded-full px-4 py-2 font-semibold  text-center "
             }
           >
             <input

@@ -25,6 +25,5 @@ export const hotelTypes = [
     "Outdoor Pool",
     "Spa",
     "Fitness Center",
-    "Sexual Services",
     "Bar",
   ];

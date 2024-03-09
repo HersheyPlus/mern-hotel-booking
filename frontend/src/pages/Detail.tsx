@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import * as apiClient from "../api/client";
 import { AiFillStar } from "react-icons/ai";
 import GuestInfoForm from "../forms/GuestInfoForm/GuestInfoForm";
+import { BsMap } from "react-icons/bs";
 
 const Detail = () => {
   const { hotelId } = useParams();
@@ -21,13 +22,17 @@ const Detail = () => {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex flex-col gap-2">
         <span className="flex">
           {Array.from({ length: hotel.starRating }).map(() => (
             <AiFillStar className="fill-yellow-400" />
           ))}
         </span>
         <h1 className="text-3xl font-bold">{hotel.name}</h1>
+        <p className="flex gap-2 items-center mb-3 text-gray-300">
+          <BsMap />
+          {hotel.city}
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -50,7 +55,7 @@ const Detail = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] md:gap-6">
         <div className="whitespace-pre-line">{hotel.description}</div>
         <div className="h-fit">
           <GuestInfoForm
