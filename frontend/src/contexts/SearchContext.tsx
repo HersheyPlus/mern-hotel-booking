@@ -13,7 +13,7 @@ type SearchContext = {
     checkOut: Date,
     adultCount: number,
     childCount: number
-  ) => void;
+  ) => void 
 };
 
 const SearchContext = React.createContext<SearchContext | undefined>(undefined);

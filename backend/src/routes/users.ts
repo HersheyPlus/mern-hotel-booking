@@ -35,14 +35,14 @@ router.post(
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ msg: errors.array() });
+        return res.status(400).json({ message: errors.array() });
     }
     try {
       let user = await User.findOne({
         email: req.body.email,
       });
       if (user) {
-        res.status(400).json({ msg: "User already exists" });
+        res.status(400).json({ message: "User already exists" });
       }
       user = new User(req.body);
       await user.save();
@@ -59,10 +59,10 @@ router.post(
         secure: process.env.NODE_ENV === "production",
         maxAge: 86400 * 1000 * 3,
       });
-      return res.status(200).json({ msg: "User created successfully" });
+      return res.status(200).json({ message: "User created successfully" });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ msg: "Something went wrong" });
+        res.status(500).json({ message: "Something went wrong" });
     }
   }
 );

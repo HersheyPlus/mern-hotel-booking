@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="w-full p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link
-            to="https://flowbite.com/"
+            to="#"
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
           >
             <h1 className="font-bold whitespace-nowrap bg-gradient-to-l from-violet-500 to-indigo-600 bg-clip-text text-transparent text-3xl lg:text-4xl">
