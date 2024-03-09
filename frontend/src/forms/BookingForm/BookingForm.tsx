@@ -92,7 +92,8 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
        <label className="text-gray-200 text-sm font-bold flex-1">
           First Name
           <input
-            className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 font-normal"
+            className="mt-1 border rounded w-full py-2 px-3 text-gray-700 
+            bg-gray-200 font-normal"
             type="text"
             readOnly
             disabled
@@ -102,7 +103,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
         <label className="text-gray-200 text-sm font-bold flex-1">
           Last Name
           <input
-            className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 font-normal"
+            className="mt-1 border rounded w-full py-2 px-3 text-gray-700  bg-gray-200 font-normal"
             type="text"
             readOnly
             disabled
@@ -113,7 +114,7 @@ const BookingForm = ({ currentUser, paymentIntent }: Props) => {
         <label className="text-gray-200 text-sm font-bold flex-1">
           Email
           <input
-            className="mt-1 border rounded w-full py-2 px-3 text-gray-700 bg-gray-200 font-normal"
+            className="mt-1 border rounded w-full py-2 px-3 text-gray-700  font-normal bg-gray-200"
             type="text"
             readOnly
             disabled
