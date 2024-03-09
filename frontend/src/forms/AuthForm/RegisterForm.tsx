@@ -13,9 +13,10 @@ export type RegisterFormData = {
 };
 
 const RegisterForm = () => {
-  const {showToast} = useAppContext();
+  const { showToast } = useAppContext();
   const navigate = useNavigate()
   const queryClient = useQueryClient();
+  
   const {
     register,
     watch,

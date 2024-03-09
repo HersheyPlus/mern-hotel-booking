@@ -30,7 +30,7 @@ const Home = () => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
       <div className="overflow-hidden relative">
-        <img src="/img2.jpeg" alt="" className="rounded-lg opacity-70 h-full" />
+        <img src="/img2.jpeg" alt="" className="rounded-lg opacity-70 " />
         <h1 className="absolute left-[33%] sm:left-[35%] xl:left-[38%] top-1/2 z-40 font-bold capitalize text-xl lg:text-4xl text-center text-gray-200 font">Cheap</h1>
       </div>
       <div className="overflow-hidden group relative">
