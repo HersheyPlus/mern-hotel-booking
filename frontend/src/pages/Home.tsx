@@ -20,7 +20,7 @@ const Home = () => {
           </p>
         </div>
         <div className="hidden md:block">
-          <img src="/hero.jpeg" alt="hero" className="rounded-xl h-full" />
+          <img src="/hero.jpeg" alt="hero" className="rounded-xl" />
         </div>
       </div>
       <hr className="border border-gray-600" />
