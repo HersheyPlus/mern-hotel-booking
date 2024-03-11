@@ -19,7 +19,7 @@ const Home = () => {
             without breaking the bank. Start planning your next adventure today!
           </p>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <img src="/hero.jpeg" alt="hero" className="rounded-xl" />
         </div>
       </div>
