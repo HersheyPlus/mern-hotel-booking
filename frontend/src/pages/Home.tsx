@@ -2,7 +2,7 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-12">
       <div className="flex flex-col md:flex-row gap-8 justify-between">
-        <div className="space-y-4 max-w-[500px] overflow-scroll">
+        <div className="space-y-4 xl:max-w-[500px] overflow-scroll">
           <h1 className="text-5xl xl:text-[72px] font-bold text-gray-200">
             Find your next stay
           </h1>
